@@ -4,6 +4,8 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 
+import { AgmCoreModule } from '@agm/core';
+
 import { MyApp } from './app.component';
 
 @NgModule({
@@ -12,7 +14,10 @@ import { MyApp } from './app.component';
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyAiAxk-yAv_DveqpZX3tTwKmLc1ZRJulgM'
+    })
   ],
   bootstrap: [IonicApp],
   entryComponents: [

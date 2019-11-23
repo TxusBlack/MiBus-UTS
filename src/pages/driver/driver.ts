@@ -8,11 +8,14 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class DriverPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
+  // Obtener posición de GPS, mostrarlo y enviarlo a Firebase
+  public lat = 51.678418;
+  public lng = 7.809007;
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad DriverPage');
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams
+  ) {
   }
 
 }
