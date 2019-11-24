@@ -6,6 +6,11 @@
 
 <ion-content>
   <agm-map [latitude]="geo.lat || 6.5516271" [longitude]="geo.lng || -73.1337569" [zoom]="16">
-    <agm-marker [latitude]="geo.lat" [longitude]="geo.lng" *ngIf="geo.lat"></agm-marker>
+    <agm-marker
+    [latitude]="geo.lat"
+    [longitude]="geo.lng"
+    *ngIf="geo.lat"
+    [iconUrl]="iconBus">
+    </agm-marker>
   </agm-map>
 </ion-content>
