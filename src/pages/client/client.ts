@@ -9,8 +9,8 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 export class ClientPage {
 
   // Obtener todos los puntos y mostrarlos
-  public lat = 51.678418;
-  public lng = 7.809007;
+  public lat = 6.5516271;
+  public lng = -73.1337569;
 
   constructor(
     public navCtrl: NavController,

@@ -5,6 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 
 import { AgmCoreModule } from '@agm/core';
+import { Geolocation } from '@ionic-native/geolocation';
 
 import { MyApp } from './app.component';
 
@@ -26,7 +27,8 @@ import { MyApp } from './app.component';
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    Geolocation
   ]
 })
 export class AppModule {}

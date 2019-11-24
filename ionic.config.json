@@ -1,5 +1,7 @@
 {
   "name": "BusesGPS",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "ionic-angular"
 }
