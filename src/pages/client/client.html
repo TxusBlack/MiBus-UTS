@@ -6,6 +6,6 @@
 
 <ion-content>
   <agm-map [latitude]="lat" [longitude]="lng" [zoom]="16">
-    <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+    <agm-marker *ngFor="let bus of buses" [latitude]="bus?.lat" [longitude]="bus?.lng" [iconUrl]="iconBus"></agm-marker>
   </agm-map>
 </ion-content>
