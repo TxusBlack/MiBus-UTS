@@ -9,6 +9,12 @@ import { Geolocation } from '@ionic-native/geolocation';
 import { Device } from '@ionic-native/device';
 
 import { MyApp } from './app.component';
+import { AngularFireModule } from '@angular/fire';
+import { environment } from '../environments/environment';
+
+import * as firebase from 'firebase';
+
+firebase.initializeApp(environment.firebase);
 
 @NgModule({
   declarations: [
@@ -19,7 +25,8 @@ import { MyApp } from './app.component';
     IonicModule.forRoot(MyApp),
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyAiAxk-yAv_DveqpZX3tTwKmLc1ZRJulgM'
-    })
+    }),
+    AngularFireModule.initializeApp(environment.firebase)
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -30,7 +37,7 @@ import { MyApp } from './app.component';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     Geolocation,
-    Device,
+    Device
   ]
 })
 export class AppModule {}
