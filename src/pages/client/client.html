@@ -5,7 +5,16 @@
 </ion-header>
 
 <ion-content>
-  <agm-map [latitude]="lat" [longitude]="lng" [zoom]="16">
+  <agm-map [latitude]="geo.lat || 6.5516271" [longitude]="geo.lng || -73.1337569" [zoom]="16">
+    <!-- Buses -->
     <agm-marker *ngFor="let bus of buses" [latitude]="bus?.lat" [longitude]="bus?.lng" [iconUrl]="iconBus"></agm-marker>
+    <!-- Persona -->
+    <agm-marker
+    [latitude]="geo.lat"
+    [longitude]="geo.lng"
+    *ngIf="geo.lat && geo.lng"
+    [iconUrl]="iconPerson"
+    [zIndex]=2>
+    </agm-marker>
   </agm-map>
 </ion-content>
