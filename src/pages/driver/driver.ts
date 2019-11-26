@@ -37,7 +37,8 @@ export class DriverPage {
   }
 
   async saveGps(lat, lng) {
-    return await firebase.firestore().collection('usuarios').doc(this.uuid).update({
+    return await firebase.firestore().collection('usuarios').doc(this.uuid).set({
+      uuid: this.uuid,
       lat: lat,
       lng: lng
     });
@@ -65,7 +66,7 @@ export class DriverPage {
       this.uuid = this.device.uuid;
       console.log('uuid', this.uuid);
     } else {
-      this.uuid = '1234567890';
+      this.uuid = '123';
     }
   }
 

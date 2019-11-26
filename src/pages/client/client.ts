@@ -39,18 +39,27 @@ export class ClientPage {
     this.watch = this.geolocation.watchPosition().subscribe(async (gps) => {
       this.geo.lat = gps.coords.latitude;
       this.geo.lng = gps.coords.longitude;
-      console.log('GPS');
     });
   }
 
   async getData() {
-    const snapshot = await firebase.firestore().collection('usuarios').get();
-    if (!snapshot.empty) {
-      snapshot.forEach(buses => {
-        this.buses.push(buses.data());
-        console.log(this.buses);
-      });
-    }
+    firebase.firestore().collection('usuarios').onSnapshot(snapshot => {
+      if (!snapshot.empty) {
+        snapshot.docChanges().forEach(buses => {
+          if (buses.type === 'added') {
+            this.buses.push(buses.doc.data());
+          }
+          if (buses.type === 'modified') {
+            this.buses[buses.newIndex] = buses.doc.data();
+          }
+          if (buses.type === 'removed') {
+            this.buses = this.buses.filter((obj) => {
+              return obj.uuid !== buses.doc.data().uuid;
+            });
+          }
+        });
+      }
+    });
   }
 
   ionViewWillEnter() {
