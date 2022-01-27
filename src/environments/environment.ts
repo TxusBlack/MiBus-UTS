@@ -1,12 +1,12 @@
 export const environment = {
   production: false,
   firebase: {
-    apiKey: "AIzaSyDuk6bG_D5fT26cbDIdAwd2MJfDR3blIjM",
-    authDomain: "mibus-san-gil.firebaseapp.com",
-    databaseURL: "https://mibus-san-gil.firebaseio.com",
-    projectId: "mibus-san-gil",
-    storageBucket: "mibus-san-gil.appspot.com",
-    messagingSenderId: "847820356763",
-    appId: "1:847820356763:web:b88b7f591e497b51f81a3e"
+    apiKey: "AIzaSyDUbb9HJnla7w1MikWRP2mO08J_VDwq3t0",
+    authDomain: "edez-tracking.firebaseapp.com",
+    projectId: "edez-tracking",
+    storageBucket: "edez-tracking.appspot.com",
+    messagingSenderId: "182852397060",
+    appId: "1:182852397060:web:a67cc8e36869aa9eb02d51",
+    measurementId: "G-0Q4KT745JG"
   }
 };

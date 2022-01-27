@@ -43,7 +43,7 @@ export class LoginPage {
       this.uuid = this.device.uuid;
       console.log('uuid', this.uuid);
     } else {
-      this.uuid = '1234567890';
+      this.uuid = '123';
     }
   }
 

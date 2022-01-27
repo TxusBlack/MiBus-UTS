@@ -24,7 +24,7 @@ firebase.initializeApp(environment.firebase);
     BrowserModule,
     IonicModule.forRoot(MyApp),
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyAiAxk-yAv_DveqpZX3tTwKmLc1ZRJulgM'
+      apiKey: 'AIzaSyDUbb9HJnla7w1MikWRP2mO08J_VDwq3t0'
     }),
     AngularFireModule.initializeApp(environment.firebase)
   ],
