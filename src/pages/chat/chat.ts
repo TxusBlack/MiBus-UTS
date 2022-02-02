@@ -55,5 +55,6 @@ export class ChatPage {
     } else {
       this.uuid = '123';
     }
+    alert("Página en construcción")
   }
 }
