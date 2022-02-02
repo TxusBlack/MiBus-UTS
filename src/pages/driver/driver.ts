@@ -24,6 +24,7 @@ export class DriverPage {
     url: '../../assets/imgs/pin-bus.png',
     scaledSize: {height: 40, width: 40},
   };
+  public isSendingToServer = false;
 
 
   constructor(
@@ -37,24 +38,36 @@ export class DriverPage {
   }
 
   async saveGps(lat, lng) {
-    return await firebase.firestore().collection('usuarios').doc(this.uuid).set({
-      uuid: this.uuid,
+    // Registro tiempo real
+    await firebase.firestore().collection('usuarios').doc(this.uuid).update({
       lat: lat,
       lng: lng
     });
+    // Registro histórico
+    await firebase.firestore().collection('historial').doc(this.uuid).collection("registros").add({
+      lat: lat,
+      lng: lng,
+      timestamp: Math.round(+new Date()/1000), // unix format
+    }).catch(err => console.log('err', err));
   }
 
   watchGps() {
     this.watch = this.geolocation.watchPosition().subscribe(async (gps) => {
       this.geo.lat = gps.coords.latitude;
       this.geo.lng = gps.coords.longitude;
-      this.saveGps(this.geo.lat,  this.geo.lng).then(() => {
-        this.toastCtrl.create({
-          message: 'Se enviaron los datos al servidor',
-          duration: 1000
-        }).present();
-      });
+      if (this.isSendingToServer) {
+        this.saveGps(this.geo.lat,  this.geo.lng).then(() => {
+          this.toastCtrl.create({
+            message: 'Se enviaron los datos al servidor',
+            duration: 1000
+          }).present();
+        });
+      }
     });
+  }
+
+  toggleSendData() {
+    this.isSendingToServer = !this.isSendingToServer;
   }
 
   async checkIfUserIsActive() {

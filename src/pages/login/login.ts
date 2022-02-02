@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, Platform } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Platform, ToastController } from 'ionic-angular';
 import { Device } from '@ionic-native/device';
 import * as firebase from 'firebase';
 import 'firebase/firestore';
@@ -18,7 +18,8 @@ export class LoginPage {
     public navCtrl: NavController,
     public navParams: NavParams,
     private platform: Platform,
-    private device: Device
+    private device: Device,
+    private toastCtrl: ToastController
   ) {
   }
 
@@ -46,7 +47,10 @@ export class LoginPage {
     if (!config.isActive) {
       return alert("La licencia de la app no está activa");
     } else {
-      return alert("La licencia de la app ha sido configurada exitosamente");
+      return this.toastCtrl.create({
+        message: "La licencia de la app ha sido configurada exitosamente",
+        duration: 1000
+      }).present();
     }
   }
 

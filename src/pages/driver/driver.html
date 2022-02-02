@@ -14,3 +14,9 @@
     </agm-marker>
   </agm-map>
 </ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <button ion-button full (click)="toggleSendData()" [color]="isSendingToServer ? 'danger' : 'primary'" [disabled]="!geo.lat">{{ isSendingToServer ? "Detener" : "Iniciar" }}</button>
+  </ion-toolbar>
+</ion-footer>
