@@ -12,6 +12,7 @@ import 'firebase/firestore';
 export class LoginPage {
 
   public uuid;
+  public isActive = false;
 
   constructor(
     public navCtrl: NavController,
@@ -22,23 +23,35 @@ export class LoginPage {
   }
 
   goToPage(page: string) {
-    this.navCtrl.push(page);
+    this.navCtrl.setRoot(page);
   }
 
   async setDocumentDriver() {
     const fb = firebase.firestore();
     const snapshot = await fb.collection('usuarios').doc(this.uuid).get();
-    if (snapshot.exists) {
-      this.goToPage('DriverPage');
-    } else {
+    if (!snapshot.exists) {
       await fb.collection('usuarios').doc(this.uuid).set({
-        uuid: this.uuid
+        uuid: this.uuid,
+        isActive: true,
       });
-      this.goToPage('DriverPage');
+    }
+    return this.goToPage('DriverPage');
+  }
+
+  async checkLiscence() {
+    const fb = firebase.firestore();
+    const snapshot = await fb.collection('config').doc("1").get();
+    const config = snapshot.data();
+    this.isActive = config.isActive;
+    if (!config.isActive) {
+      return alert("La licencia de la app no está activa");
+    } else {
+      return alert("La licencia de la app ha sido configurada exitosamente");
     }
   }
 
   ionViewDidLoad() {
+    this.checkLiscence();
     if (this.platform.is('cordova')) {
       this.uuid = this.device.uuid;
       console.log('uuid', this.uuid);

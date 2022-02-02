@@ -53,7 +53,8 @@
   "cordova": {
     "plugins": {
       "cordova-plugin-geolocation": {
-        "GEOLOCATION_USAGE_DESCRIPTION": "To locate you"
+        "GEOLOCATION_USAGE_DESCRIPTION": "To locate you",
+        "GPS_REQUIRED": "true"
       },
       "cordova-plugin-whitelist": {},
       "cordova-plugin-statusbar": {},

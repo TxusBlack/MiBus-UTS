@@ -57,8 +57,19 @@ export class DriverPage {
     });
   }
 
+  async checkIfUserIsActive() {
+    const fb = firebase.firestore();
+    const snapshot = await fb.collection('usuarios').doc(this.uuid).get();
+    const user = snapshot.data();
+    if (!user.isActive) {
+      return alert("El usuario no está activo.")
+    } else {
+      return this.watchGps();
+    }
+  }
+
   ionViewWillEnter() {
-   this.watchGps();
+    this.checkIfUserIsActive();
   }
 
   ionViewDidLoad() {
