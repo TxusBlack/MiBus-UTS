@@ -41,7 +41,8 @@ export class DriverPage {
     // Registro tiempo real
     await firebase.firestore().collection('usuarios').doc(this.uuid).update({
       lat: lat,
-      lng: lng
+      lng: lng,
+      isOnline: this.isSendingToServer
     });
     // Registro histórico
     await firebase.firestore().collection('historial').doc(this.uuid).collection("registros").add({
@@ -49,6 +50,10 @@ export class DriverPage {
       lng: lng,
       timestamp: Math.round(+new Date()/1000), // unix format
     }).catch(err => console.log('err', err));
+  }
+
+  goToChatPage() {
+    this.navCtrl.push("ChatPage");
   }
 
   watchGps() {
@@ -95,7 +100,9 @@ export class DriverPage {
   }
 
   ionViewDidLeave() {
-    this.watch.unsubscribe();
+    if (this.watch) {
+      this.watch.unsubscribe();
+    }
   }
 
 }
