@@ -1,3 +1,38 @@
 page-chat {
+  .message-input {
+    width: 100%;
+    border: 1px solid #92949c;
+    border-radius: 6px;
+    background: #fff;
+    resize: none;
+    margin-top: 0px;
+    padding-left: 8px;
+  }
 
+  .message {
+    padding: 10px !important;
+    border-radius: 10px !important;
+    margin-bottom: 4px !important;
+    // white-space: pre-wrap;
+  }
+
+  .my-message {
+    background: #5260ff;
+    color: #fff;
+  }
+
+  .my-row {
+    justify-content: end;
+  }
+
+  .other-message {
+    background: #3dc2ff;
+    color: #fff;
+  }
+
+  .time {
+    color: #dfdfdf;
+    float: right;
+    font-size: small;
+  }
 }
